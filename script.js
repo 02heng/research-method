@@ -207,13 +207,58 @@ function drawWordCloud() {
     };
 }
 
-// 页面加载时初始化
-window.addEventListener('load', () => {
+// 确保在页面加载完成后调用
+window.addEventListener('load', function() {
     initYearChart();
     initToolChart();
     renderPaperCards();
     drawWordCloud();
+    createToolChart();
 });
 
 // 窗口大小改变时重新绘制
 window.addEventListener('resize', drawWordCloud);
+
+function createToolChart() {
+    const ctx = document.getElementById('pieChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Technical Methods', 'Application Domains', 'Ethical Assessment'],
+            datasets: [{
+                data: [33, 50, 17],
+                backgroundColor: [
+                    '#4e79a7', // 蓝色
+                    '#f28e2b', // 橙色
+                    '#59a14f'  // 绿色
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true, // 改为 true
+            plugins: {
+                legend: {
+                    align: 'center',
+                    position: 'left',
+                    labels: {
+                        padding: 10,
+                        font: {
+                            size: 12
+                        }
+                    },
+
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.label}: ${context.parsed}%`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
