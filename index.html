@@ -3,52 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Report | SurVis</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Paper Visualization</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Research Report</h1>
-        <nav>
-            <ul>
-                <li><a href="#abstract">Abstract</a></li>
-                <li><a href="#introduction">Introduction</a></li>
-                <li><a href="#methodology">Methodology</a></li>
-                <li><a href="#results">Results</a></li>
-                <li><a href="#conclusion">Conclusion</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <!-- 左侧统计图表 -->
+        <div class="charts-section">
+            <div class="chart-container">
+                <h3>Publications by Year</h3>
+                <canvas id="yearChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>AI Tools Distribution</h3>
+                <canvas id="toolChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Word Cloud Map</h3>
+                <canvas id="cloudChart"></canvas>
+            </div>
+        </div>
 
-    <section id="abstract">
-        <h2>Abstract</h2>
-        <p>Brief summary of your research work and findings.</p>
-    </section>
+        <!-- 右侧论文卡片 -->
+        <div class="papers-section">
+            <h2>Research Papers</h2>
+            <div id="papersList"></div>
+        </div>
+        
+    </div>
 
-    <section id="introduction">
-        <h2>Introduction</h2>
-        <p>Background information and research objectives.</p>
-    </section>
-
-    <section id="methodology">
-        <h2>Methodology</h2>
-        <p>Research methods and experimental procedures.</p>
-    </section>
-
-    <section id="results">
-        <h2>Results</h2>
-        <p>Research findings and data analysis.</p>
-    </section>
-
-    <section id="conclusion">
-        <h2>Conclusion</h2>
-        <p>Summary of findings and future research directions.</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Research Report</p>
-    </footer>
-
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
