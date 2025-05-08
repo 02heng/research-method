@@ -308,7 +308,3 @@ function filterPapers() {
     });
 }
 
-// 在window.load事件中添加
-window.addEventListener('load', function() {
-    // ... existing code ...
-});
