@@ -11,6 +11,25 @@
     <div class="container">
         <!-- 左侧统计图表 -->
         <div class="charts-section">
+            <!-- 新增搜索区域 -->
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" id="titleSearch" placeholder="Search by title...">
+                    <button id="toggleSearch">+</button>
+                </div>
+                <div class="advanced-search" id="advancedSearch">
+                    <input type="text" id="authorSearch" placeholder="Search by author...">
+                    <input type="number" id="yearSearch" placeholder="Search by year...">
+                    <select id="toolSearch">
+                        <option value="">All Tools</option>
+                        <option value="GPT">GPT</option>
+                        <option value="ChatGPT">ChatGPT</option>
+                        <option value="LangChain">LangChain</option>
+                        <option value="ROS">ROS</option>
+                        <option value="None">None</option>
+                    </select>
+                </div>
+            </div>
             <div class="chart-container">
                 <h3>Classification of papers</h3>
                 <canvas id="pieChart"></canvas>

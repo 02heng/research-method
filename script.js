@@ -214,6 +214,7 @@ window.addEventListener('load', function() {
     renderPaperCards();
     drawWordCloud();
     createToolChart();
+    setupSearch();
 });
 
 // 窗口大小改变时重新绘制
@@ -262,3 +263,52 @@ function createToolChart() {
         }
     });
 }
+
+// 在文件顶部添加搜索功能
+function setupSearch() {
+    const toggleBtn = document.getElementById('toggleSearch');
+    const advancedSearch = document.getElementById('advancedSearch');
+    const searchInputs = [
+        document.getElementById('titleSearch'),
+        document.getElementById('authorSearch'),
+        document.getElementById('yearSearch'),
+        document.getElementById('toolSearch')
+    ];
+    
+    // 切换高级搜索
+    toggleBtn.addEventListener('click', () => {
+        advancedSearch.classList.toggle('active');
+        toggleBtn.textContent = advancedSearch.classList.contains('active') ? '-' : '+';
+    });
+    
+    // 实时搜索功能
+    searchInputs.forEach(input => {
+        input.addEventListener('input', filterPapers);
+    });
+}
+
+function filterPapers() {
+    const titleQuery = document.getElementById('titleSearch').value.toLowerCase();
+    const authorQuery = document.getElementById('authorSearch').value.toLowerCase();
+    const yearQuery = document.getElementById('yearSearch').value;
+    const toolQuery = document.getElementById('toolSearch').value;
+    
+    const filtered = paperData.filter(paper => {
+        return (!titleQuery || paper.title.toLowerCase().includes(titleQuery)) &&
+               (!authorQuery || paper.authors.toLowerCase().includes(authorQuery)) &&
+               (!yearQuery || paper.year == yearQuery) &&
+               (!toolQuery || paper.tool === toolQuery);
+    });
+    
+    // 重新渲染论文卡片
+    const papersList = document.getElementById('papersList');
+    papersList.innerHTML = '';
+    filtered.forEach(paper => {
+        papersList.appendChild(createPaperCard(paper));
+    });
+}
+
+// 在window.load事件中添加
+window.addEventListener('load', function() {
+    // ... existing code ...
+});
